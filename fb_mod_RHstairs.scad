@@ -5,7 +5,8 @@
 /// @author © Dave Harris 2022
 /// 
 
-module fb_RHstairs
+
+module fb_mod_RHstairs
   (
       steps
     , rise
@@ -113,8 +114,13 @@ module fb_RHstairs
 } // end module
 
 
-// local test stairsRH
+// local test RH stairs
 
-//stairsRH(steps=27, rise=1.75, tread=3.5, width=33);
+fb_mod_RHstairs(
+    steps = 27
+  , rise  = 1.75
+  , tread = 3.5
+  , width = 33
+);
 
 // eof

@@ -5,16 +5,15 @@
 /// @author © Dave Harris 2022
 /// 
 
-include <fb_globals.scad>;
+include <fb_globals.scad>
 
-include <fb_mod_LHstairs.scad>;
+use <fb_mod_LHstairs.scad>
 
-include <mod_prism.scad>;
-include <mod_window.scad>;
-include <mod_gutter.scad>;
+use <mod_prism.scad>
+use <mod_window.scad>
 
 
-module fb_LHwall()
+module fb_mod_LHwall()
 {
 
 // stair wall
@@ -49,6 +48,11 @@ difference() // lower stair wall
         , h = H_window
     );
     
+    translate([16, 1.5, 0.5])
+      linear_extrude(1)
+        text("D.Harris'22", 5.5);
+
+    
     translate( // canopy support #1
       [ 3
       , 41
@@ -63,6 +67,7 @@ difference() // lower stair wall
     ) cylinder( h = 4, r = 0.5 );
     echo("support#2=", L_build/2 +1 );
 }
+
 
 cube( // floor level strength
     [ L_stairs +0.01
@@ -493,7 +498,7 @@ color("red")
       [ 0
       , 0
       , 1  ]
-    ) fb_LHstairs(
+    ) fb_mod_LHstairs(
           steps = Steps
         , rise  = H_rise
         , tread = L_tread
@@ -746,52 +751,58 @@ translate( // slope over bottom stairs
   );
 
 
-// gutters
-//-----------------
+//// gutters
+////-----------------
+//
+//
+//translate( // gutter over stairs
+//  [ -1.6
+//  , H_bridge -0.5
+//  , 0  ]
+//) rotate(
+//      [ 180
+//      , 180
+//      , 90  ]
+//    )
+//    gutter( W_stairs/2 +1 );
+//    
+//translate( // gutter fixing
+//  [ -0.25
+//  , H_bridge -1.05
+//  , 1  ]
+//) cube(
+//    [ 0.5
+//    , 0.5
+//    , W_stairs/2 ]
+//  );
+//
+//translate( // gutter over lift
+//  [ L_stairs + W_bridge + W_lift +3.6
+//  , 84.5
+//  , 0  ]
+//) rotate(
+//      [ 180
+//      , 180
+//      , 90 ]
+//    )
+//    gutter( W_stairs/2 +1 );
+//    
+//translate( // gutter fixing
+//  [ L_stairs + W_bridge + W_lift +1.8
+//  , 83.9
+//  , 1  ]
+//) cube(
+//    [ 0.5
+//    , 0.5
+//    , W_stairs/2 ]
+//  );
+
+} // end module 
 
 
-translate( // gutter over stairs
-  [ -1.6
-  , H_bridge -0.5
-  , 0  ]
-) rotate(
-      [ 180
-      , 180
-      , 90  ]
-    )
-    gutter( W_stairs/2 +1 );
-    
-translate( // gutter fixing
-  [ -0.25
-  , H_bridge -1.05
-  , 1  ]
-) cube(
-    [ 0.5
-    , 0.5
-    , W_stairs/2 ]
-  );
+// local test
 
-translate( // gutter over lift
-  [ L_stairs + W_bridge + W_lift +3.6
-  , 84.5
-  , 0  ]
-) rotate(
-      [ 180
-      , 180
-      , 90 ]
-    )
-    gutter( W_stairs/2 +1 );
-    
-translate( // gutter fixing
-  [ L_stairs + W_bridge + W_lift +1.8
-  , 83.9
-  , 1  ]
-) cube(
-    [ 0.5
-    , 0.5
-    , W_stairs/2 ]
-  );
+fb_mod_LHwall();
 
-} // end module fb_LHwall
 
 // eof

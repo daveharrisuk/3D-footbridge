@@ -5,28 +5,38 @@
 /// @author © Dave Harris 2022
 /// 
 /// FOR ILLUSTRATION,
-///  NOT FOR PRINTING
+///  NOT PRINTING
 
 
-include <fb_globals.scad>;
-include <fb_mod_RHwall.scad>;
-include <fb_mod_LHwall.scad>;
+include<fb_globals.scad>
+
+use<fb_mod_RHwall.scad>
+use<fb_mod_LHwall.scad>
 
 
-translate( // RH side
-  [ 0
-  , 0
-  , - (W_stairs/2) -2  ]
-)
-  fb_RHwall();
+fb_illustrate( seperation = 0 );
 
 
-translate( // LH side
-  [ 0
-  , 0
-  , (W_stairs/2) +2  ]
-) rotate([ 180, 0, 0])
-    fb_LHwall();
+module fb_illustrate(
+            seperation = 0
+       )
+{
+    translate( // RH side
+      [ 0
+      , -(W_build /2) - seperation
+      , 0  ]
+    ) rotate([ -90, 0, 0 ]
+      ) fb_mod_RHwall(
+        );
+
+    translate( // LH side
+      [ 0
+      , (W_build /2) + seperation
+      , 0  ]
+    ) rotate([ 90, 0, 0 ]
+      ) fb_mod_LHwall(
+        );
+}
 
 
 // eof fb_illustrate

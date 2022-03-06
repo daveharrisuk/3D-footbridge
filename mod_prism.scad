@@ -35,6 +35,6 @@ module prism(h=20, lLH=15, lRH=25, w=1)
 } // end of module prism()
 
 // local test prism
-// prism(lLH=1, lRH= 22, h=18, w=1 );
+prism(lLH=1, lRH= 22, h=18, w=1 );
 
 // eof

@@ -7,10 +7,12 @@
 ///
 
 
-include <fb_globals.scad>;
-include <fb_mod_LHwall.scad>;
+include <fb_globals.scad>
 
-fb_LHwall();
+use <fb_mod_LHwall.scad>
+
+
+fb_mod_LHwall();
 
 
 // eof

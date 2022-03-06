@@ -8,9 +8,11 @@
 
 
 include <fb_globals.scad>;
-include <fb_mod_RHwall.scad>;
 
-fb_RHwall();
+use <fb_mod_RHwall.scad>;
+
+
+fb_mod_RHwall();
 
 
 // eof

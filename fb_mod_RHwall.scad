@@ -10,14 +10,13 @@
 
 include <fb_globals.scad>;
 
-include <fb_mod_RHstairs.scad>;
+use <fb_mod_RHstairs.scad>;
 
-include <mod_prism.scad>;
-include <mod_window.scad>;
-include <mod_gutter.scad>;
+use <mod_prism.scad>;
+use <mod_window.scad>;
 
 
-module fb_RHwall()
+module fb_mod_RHwall()
 {
     
 // stair wall
@@ -478,7 +477,7 @@ color("red")
       [ 0
       , 0
       , 1  ]
-    ) fb_RHstairs(
+    ) fb_mod_RHstairs(
           steps = Steps
         , rise  = H_rise
         , tread = L_tread
@@ -681,49 +680,53 @@ translate( // slope over bottom stairs
        , h   = -1.65
   );
 
-translate( // gutter over stairs
-  [ -1.6
-  , -H_bridge +0.5
-  , 0  ]
-) rotate(
-      [ 180
-      , 180
-      , -90 ]
-    )
-    gutter( W_stairs/2 +1 );
-    
-translate( // gutter fixing
-  [ -0.25
-  , -H_bridge +0.55
-  , 1  ]
-) cube(
-    [ 0.5
-    , 0.5
-    , W_stairs/2 ]
-  );
-
-translate( // gutter over lift
-  [ L_stairs + W_bridge + W_lift +3.6
-  , -84.5
-  , 0  ]
-) rotate(
-      [ 180
-      , 180
-      , -90 ]
-    )
-    gutter( W_stairs/2 +1 );
-    
-translate( // gutter fixing
-  [ L_stairs + W_bridge + W_lift +1.8
-  , -84.4
-  , 1  ]
-) cube(
-    [ 0.5
-    , 0.5
-    , W_stairs/2 ]
-  );
+//translate( // gutter over stairs
+//  [ -1.6
+//  , -H_bridge +0.5
+//  , 0  ]
+//) rotate(
+//      [ 180
+//      , 180
+//      , -90 ]
+//    )
+//    gutter( W_stairs/2 +1 );
+//    
+//translate( // gutter fixing
+//  [ -0.25
+//  , -H_bridge +0.55
+//  , 1  ]
+//) cube(
+//    [ 0.5
+//    , 0.5
+//    , W_stairs/2 ]
+//  );
+//
+//translate( // gutter over lift
+//  [ L_stairs + W_bridge + W_lift +3.6
+//  , -84.5
+//  , 0  ]
+//) rotate(
+//      [ 180
+//      , 180
+//      , -90 ]
+//    )
+//    gutter( W_stairs/2 +1 );
+//    
+//translate( // gutter fixing
+//  [ L_stairs + W_bridge + W_lift +1.8
+//  , -84.4
+//  , 1  ]
+//) cube(
+//    [ 0.5
+//    , 0.5
+//    , W_stairs/2 ]
+//  );
 
  
 } // end module fb_mod_RHwall
+
+// local test
+
+fb_mod_RHwall();
 
 // eof
